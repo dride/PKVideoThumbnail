@@ -1,17 +1,15 @@
 {
   "name": "cordova-plugin-photokandy-video-thumbnail",
   "version": "2.1.0",
-  "description": "Create video thumbnails from video files; iOS 6+, Android API 17+",
+  "description":
+    "Create video thumbnails from video files; iOS 6+, Android API 17+",
   "cordova": {
     "id": "cordova-plugin-photokandy-video-thumbnail",
-    "platforms": [
-      "ios",
-      "android"
-    ]
+    "platforms": ["ios", "android"]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/photokandyStudios/PKVideoThumbnail.git"
+    "url": "git+https://github.com/dride/PKVideoThumbnail.git"
   },
   "keywords": [
     "video",
