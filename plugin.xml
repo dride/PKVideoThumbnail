@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-plugin-photokandy-video-thumbnail"
-    version="2.1.0">
+    id="cordova-plugin-video-thumbnail2"
+    version="2.1.1">
     <engines>
-    	<engine name="cordova" version=">=2.9.0" />
+    	<engine name="cordova" version=">=3.0.0" />
     </engines>
     <name>Video Thumbnail</name>
     <description>Create video thumbnails from video files; iOS 6+, Android 2.x+</description>
