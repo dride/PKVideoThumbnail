@@ -130,40 +130,42 @@
 
 - (void) createThumbnail:(CDVInvokedUrlCommand*)command
 {
-    CDVPluginResult* pluginResult = nil;
+	[self.commandDelegate runInBackground:^{
+		CDVPluginResult* pluginResult = nil;
 
-    @try {
-        NSString* theSourceVideoName = [command argumentAtIndex:0];
-        NSString* theTargetImageName = [command argumentAtIndex:1];
+		@try {
+			NSString* theSourceVideoName = [command argumentAtIndex:0];
+			NSString* theTargetImageName = [command argumentAtIndex:1];
 
-        NSMutableDictionary* options = nil;
-        options = [command argumentAtIndex:2 withDefault:nil];
-        if (options != nil) {
-            options = [NSMutableDictionary dictionaryWithDictionary:options];
-        } else {
-            options = [NSMutableDictionary dictionaryWithCapacity:1];
-        }
+			NSMutableDictionary* options = nil;
+			options = [command argumentAtIndex:2 withDefault:nil];
+			if (options != nil) {
+				options = [NSMutableDictionary dictionaryWithDictionary:options];
+			} else {
+				options = [NSMutableDictionary dictionaryWithCapacity:1];
+			}
 
-        // supply default options if none provided
-        if (![options objectForKey:@"position"]) {
-            // if not supplied, we default to 1 second into the video
-            [options setObject:[NSNumber numberWithFloat:1.0] forKey:@"position"];
-        }
-        if (![options objectForKey:@"mode"]) {
-            // if not supplied, we default to "file" mode (rather than "data")
-            [options setObject:@"file" forKey: @"mode"];
-        }
-        if (![options objectForKey:@"quality"]) {
-            // if not supplied, thumbnail quality is 80%.
-            [options setObject:[NSNumber numberWithFloat:0.8] forKey:@"quality"];
-        }
+			// supply default options if none provided
+			if (![options objectForKey:@"position"]) {
+				// if not supplied, we default to 1 second into the video
+				[options setObject:[NSNumber numberWithFloat:1.0] forKey:@"position"];
+			}
+			if (![options objectForKey:@"mode"]) {
+				// if not supplied, we default to "file" mode (rather than "data")
+				[options setObject:@"file" forKey: @"mode"];
+			}
+			if (![options objectForKey:@"quality"]) {
+				// if not supplied, thumbnail quality is 80%.
+				[options setObject:[NSNumber numberWithFloat:0.8] forKey:@"quality"];
+			}
 
-        pluginResult = [self extractThumbnailAtPath:theSourceVideoName toPath:theTargetImageName withOptions:options];
-    } @catch (NSException* exception) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_JSON_EXCEPTION messageAsString:[exception reason]];
-    }
+			pluginResult = [self extractThumbnailAtPath:theSourceVideoName toPath:theTargetImageName withOptions:options];
+		} @catch (NSException* exception) {
+			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_JSON_EXCEPTION messageAsString:[exception reason]];
+		}
 
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
 }
 @end
 
