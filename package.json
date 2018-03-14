@@ -1,8 +1,7 @@
 {
   "name": "cordova-plugin-video-thumbnail2",
-  "version": "2.1.0",
-  "description":
-    "Create video thumbnails from video files; iOS 6+, Android API 17+",
+  "version": "2.1.1",
+  "description": "Create video thumbnails from video files; iOS 6+, Android API 17+",
   "cordova": {
     "id": "cordova-plugin-video-thumbnail2",
     "platforms": ["ios", "android"]
@@ -20,12 +19,10 @@
     "cordova-ios",
     "cordova-android"
   ],
-  "engines": [
-    {
-      "name": "cordova",
-      "version": ">=3.0.0"
-    }
-  ],
+  "engines": [{
+    "name": "cordova",
+    "version": ">=3.0.0"
+  }],
   "author": "Kerri Shotts",
   "license": "MIT",
   "bugs": {
